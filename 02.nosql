@@ -1,0 +1,33 @@
+/* Apenas o Count
+
+/*  Faça uma busca de quantos livros não estão com o status publicado e
+pageCount menor que 300 */
+
+db.biblioteca.countDocuments({
+    status: 'PUBLISH',
+    pageCount: { $gt:0, $lt: 300 }
+})
+
+/* Faça uma busca de livros que contém as palavras MongoDB e SQL Server no título */
+
+db.biblioteca.countDocuments({
+$and : [
+    { title: { $regex: 'MongoDB' } },
+    { title: { $regex: 'SQL Server' } }
+]
+})
+
+/* Faça uma busca com expressão regular onde ISBN começa com 18 */
+db.biblioteca.countDocuments({ isbn: { $regex: '^18' } })
+
+/* Usando Expressão Regular, busque livros que contém a palavra JAVA ou Mobile na descrição do
+livro (LongDescription), lembrando que deve trazer todas as palavras independente de começa com
+maiúsculo ou minúsculo */
+
+db.biblioteca.countDocuments({
+$or : [
+    { longDescription: { $regex: 'JAVA', $options: 'i'} },
+    { longDescription: { $regex: 'Mobile', $options: 'i'} }
+]
+})
+
