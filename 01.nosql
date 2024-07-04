@@ -10,8 +10,8 @@ db.biblioteca.find({
 
 db.biblioteca.find({
 $and : [
-    { title: { $regex: 'MongoDB' } },
-    { title: { $regex: 'SQL Server' } }
+    { title: { $regex: '/MongoDB/' } },
+    { title: { $regex: '/SQL Server/' } }
 ]
 })
 
@@ -26,8 +26,8 @@ maiúsculo ou minúsculo */
 
 db.biblioteca.find({
 $or : [
-    { longDescription: { $regex: 'JAVA', $options: 'i'} },
-    { longDescription: { $regex: 'Mobile', $options: 'i'} }
+    { longDescription: { $regex: '/JAVA/', $options: 'i'} },
+    { longDescription: { $regex: '/Mobile/', $options: 'i'} }
 ]
 })
 
